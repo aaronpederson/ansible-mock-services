@@ -1,7 +1,17 @@
 ---
+galaxy_info:
+  author: "Royston Tong"
+  description: "Simulates serivces"
+  license: "Apache License, Version 2.0"
+  platforms:
+    - name: "Ubuntu"
+      versions:
+        - "trusty"
+  categories:
+    - "cloud"
 dependencies:
-  - role: package/java
-  - role: package/upstart
+  - role: telusdigital.java
+  - role: telusdigital.upstart
     upstart_name: mock-services
     upstart_description: Mock services
     upstart_exec_path: "{{ mock_services_install_root }}/startWiremock.sh"
