@@ -1,0 +1,7 @@
+---
+- name: Reload Service | mock-services
+  service:
+    state: reloaded
+    name: mock-services
+  tags:
+    - disruptive

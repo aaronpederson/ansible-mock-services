@@ -1,0 +1,7 @@
+---
+dependencies:
+  - role: package/java
+  - role: package/upstart
+    upstart_name: mock-services
+    upstart_description: Mock services
+    upstart_exec_path: "{{ mock_services_install_root }}/startWiremock.sh"

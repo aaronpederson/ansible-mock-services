@@ -1,0 +1,21 @@
+---
+- name: Configure | Mock Services | PIDFILE
+  lineinfile:
+    state: present
+    dest: "{{ mock_services_install_root }}/constants.conf"
+    regexp: '^PIDFILE='
+    line: "PIDFILE={{ mock_services_pidfile_path }}"
+  notify: Reload Service | mock-services
+  tags:
+    - pidfile
+    - service
+
+- name: Configure | Mock Services | LOGDIR
+  lineinfile:
+    state: present
+    dest: "{{ mock_services_install_root }}/constants.conf"
+    regexp: '^LOGDIR='
+    line: "LOGDIR={{ mock_services_log_root }}"
+  notify: Reload Service | mock-services
+  tags:
+    - logging

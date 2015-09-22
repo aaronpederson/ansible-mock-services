@@ -1,0 +1,34 @@
+---
+- name: Upload Deployment Key
+  copy:
+    src: opt/mock-services.key
+    dest: /opt/mock-services.key
+    owner: root
+    group: wcadmin
+    mode: 0400
+  tags:
+    - security-concern
+    - improves-security
+
+- name: Directories Exists
+  file:
+    state: directory
+    path: "{{ item }}"
+    owner: "{{ mock_services_user }}"
+    group: "{{ mock_services_group }}"
+    mode: 0755
+  with_items:
+    - "{{ mock_services_runtime_root }}"
+    - "{{ mock_services_log_root }}"
+
+- name: Mock Services | Fetch via git
+  git:
+    repo: git@bitbucket.org:webchannel/uss_bt_mock_services.git
+    dest: "{{ mock_services_install_root }}"
+    key_file: /opt/mock-services.key
+    accept_hostkey: yes
+    force: yes
+  notify: Reload Service | mock-services
+  tags:
+    - software-installation
+    - using-git
