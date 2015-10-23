@@ -1,7 +1,8 @@
 ---
+mock_services_user: www-data
+mock_services_group: www-data
+
 mock_services_log_root: "{{ log_root | default('/var/log') }}/mock-services"
 mock_services_runtime_root: "{{ runtime_root | default('/var/run') }}/mock-services"
 mock_services_pidfile_path: "{{ mock_services_runtime_root }}/mock-services.pid"
-mock_services_group: www-data
-mock_services_user: www-data
 mock_services_install_root: /opt/mock-services
