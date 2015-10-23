@@ -4,7 +4,7 @@
     src: opt/mock-services.key
     dest: /opt/mock-services.key
     owner: root
-    group: wcadmin
+    group: staff
     mode: 0400
   tags:
     - security-concern
